@@ -1,0 +1,39 @@
+Project: Number Guessing Game
+import random
+
+def play_game():
+    secret_number = random.randint(1, 100)
+    attempts = 0
+
+    print("🎯 Welcome to Number Guessing Game")
+    print("ผมสุ่มตัวเลขไว้แล้วระหว่าง 1 - 100")
+    print("ลองทายดูว่าคือเลขอะไร!\n")
+
+    while True:
+        try:
+            guess = int(input("ทายเลขของคุณ: "))
+            attempts += 1
+
+            if guess < secret_number:
+                print("น้อยไป ⬇️ ลองใหม่")
+            elif guess > secret_number:
+                print("มากไป ⬆️ ลองใหม่")
+            else:
+                print(f"✅ ถูกต้อง! คุณใช้ไป {attempts} ครั้ง")
+                break
+        except ValueError:
+            print("กรุณาใส่ตัวเลขเท่านั้น")
+
+
+def main():
+    while True:
+        play_game()
+        again = input("\nอยากเล่นอีกไหม? (y/n): ").lower()
+        if again != 'y':
+            print("ขอบคุณที่เล่นเกม 👋")
+            break
+
+
+if __name__ == "__main__":
+    main()
+
